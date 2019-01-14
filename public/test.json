@@ -1,0 +1,345 @@
+{
+  "data" : [
+      { "c_time" : "2018-03-24 17:45:30" ,
+        "c_sensor": 2,
+        "c_sensed_parameter": "Wind speed",
+        "c_value": 10
+      },
+      { "c_time" : "2018-03-16 17:45:30" ,
+        "c_sensor": 2,
+        "c_sensed_parameter": "Wind speed",
+        "c_value": 700
+      },
+      { "c_time" : "2018-03-16 17:49:30" ,
+        "c_sensor": 2,
+        "c_sensed_parameter": "Wind speed",
+        "c_value": 700
+      },
+      { "c_time" : "2018-03-16 17:48:30" ,
+        "c_sensor": 2,
+        "c_sensed_parameter": "Wind speed",
+        "c_value": 300
+      },
+      { "c_time" : "2018-03-16 17:47:30" ,
+        "c_sensor": 2,
+        "c_sensed_parameter": "Wind speed",
+        "c_value": 230
+      },
+      { "c_time" : "2018-03-16 17:46:30" ,
+        "c_sensor": 2,
+        "c_sensed_parameter": "Wind speed",
+        "c_value": 130
+      },
+      { "c_time" : "2018-03-16 17:45:30" ,
+        "c_sensor": 2,
+        "c_sensed_parameter": "Wind speed",
+        "c_value": 40
+      },
+      { "c_time" : "2018-03-16 17:44:30" ,
+        "c_sensor": 2,
+        "c_sensed_parameter": "Wind speed",
+        "c_value": 40
+      },
+      { "c_time" : "2018-03-06 17:49:30" ,
+        "c_sensor": 2,
+        "c_sensed_parameter": "Temperature",
+        "c_value": 700
+      },
+      { "c_time" : "2018-03-06 17:49:30" ,
+        "c_sensor": 2,
+        "c_sensed_parameter": "Temperature",
+        "c_value": 700
+      },
+      { "c_time" : "2018-03-06 17:48:30" ,
+        "c_sensor": 2,
+        "c_sensed_parameter": "Temperature",
+        "c_value": 300
+      },
+      { "c_time" : "2018-03-06 17:47:30" ,
+        "c_sensor": 2,
+        "c_sensed_parameter": "Temperature",
+        "c_value": 230
+      },
+      { "c_time" : "2018-03-06 17:46:30" ,
+        "c_sensor": 2,
+        "c_sensed_parameter": "Temperature",
+        "c_value": 130
+      },
+      { "c_time" : "2018-03-06 17:45:30" ,
+        "c_sensor": 2,
+        "c_sensed_parameter": "Temperature",
+        "c_value": 40
+      },
+      { "c_time" : "2018-03-06 17:44:30" ,
+        "c_sensor": 2,
+        "c_sensed_parameter": "Temperature",
+        "c_value": 40
+      },
+      { "c_time" : "2018-03-06 17:43:30" ,
+        "c_sensor": 2,
+        "c_sensed_parameter": "Temperature",
+        "c_value": 20
+      },
+      { "c_time" : "2018-03-06 17:42:30" ,
+        "c_sensor": 2,
+        "c_sensed_parameter": "Temperature",
+        "c_value": 10
+      },
+      { "c_time" : "2018-03-06 17:41:30" ,
+        "c_sensor": 2,
+        "c_sensed_parameter": "Temperature",
+        "c_value": 400
+      },
+      { "c_time" : "2018-03-06 17:40:30" ,
+        "c_sensor": 2,
+        "c_sensed_parameter": "Temperature",
+        "c_value": 500
+      },
+      { "c_time" : "2018-03-06 17:39:30" ,
+        "c_sensor": 2,
+        "c_sensed_parameter": "Temperature",
+        "c_value": 100
+      },
+      { "c_time" : "2018-03-06 17:38:30" ,
+        "c_sensor": 2,
+        "c_sensed_parameter": "Temperature",
+        "c_value": 50
+      },
+      { "c_time" : "2018-03-06 17:37:30" ,
+        "c_sensor": 2,
+        "c_sensed_parameter": "Temperature",
+        "c_value": 100
+      },
+      { "c_time" : "2018-03-06 17:36:30" ,
+        "c_sensor": 2,
+        "c_sensed_parameter": "Temperature",
+        "c_value": 700
+      },
+      { "c_time" : "2018-03-06 17:35:30" ,
+        "c_sensor": 2,
+        "c_sensed_parameter": "Temperature",
+        "c_value": 350
+      },
+      { "c_time" : "2018-03-06 17:34:30" ,
+        "c_sensor": 2,
+        "c_sensed_parameter": "Temperature",
+        "c_value": 300
+      },
+      { "c_time" : "2018-03-06 17:33:30" ,
+        "c_sensor": 2,
+        "c_sensed_parameter": "Temperature",
+        "c_value": 400
+      },
+      { "c_time" : "2018-03-06 17:32:30" ,
+        "c_sensor": 2,
+        "c_sensed_parameter": "Temperature",
+        "c_value": 620
+      },
+      { "c_time" : "2018-03-06 17:31:30" ,
+        "c_sensor": 2,
+        "c_sensed_parameter": "Temperature",
+        "c_value": 630
+      },
+      { "c_time" : "2018-03-06 17:30:30" ,
+        "c_sensor": 2,
+        "c_sensed_parameter": "Temperature",
+        "c_value": 660
+      },
+      { "c_time" : "2018-03-06 17:26:30" ,
+        "c_sensor": 2,
+        "c_sensed_parameter": "Temperature",
+        "c_value": 650
+      },
+      { "c_time" : "2018-03-06 17:25:30" ,
+        "c_sensor": 2,
+        "c_sensed_parameter": "Temperature",
+        "c_value": 600
+      },
+      { "c_time" : "2018-03-06 17:23:30" ,
+        "c_sensor": 2,
+        "c_sensed_parameter": "Temperature",
+        "c_value": 400
+      },
+      { "c_time" : "2018-03-06 17:22:30" ,
+        "c_sensor": 2,
+        "c_sensed_parameter": "Temperature",
+        "c_value": 100
+      },
+      { "c_time" : "2018-03-06 17:21:30" ,
+        "c_sensor": 2,
+        "c_sensed_parameter": "Temperature",
+        "c_value": 500
+      },
+      { "c_time" : "2018-03-06 17:20:30" ,
+        "c_sensor": 2,
+        "c_sensed_parameter": "Temperature",
+        "c_value": 700
+      },
+      { "c_time" : "2018-03-06 17:19:30" ,
+        "c_sensor": 2,
+        "c_sensed_parameter": "Temperature",
+        "c_value": 150
+      },
+      { "c_time" : "2018-03-06 17:18:30" ,
+        "c_sensor": 2,
+        "c_sensed_parameter": "Temperature",
+        "c_value": 100
+      },
+      { "c_time" : "2018-03-06 17:17:30" ,
+        "c_sensor": 2,
+        "c_sensed_parameter": "Temperature",
+        "c_value": 500
+      },
+      { "c_time" : "2018-03-06 17:16:30" ,
+        "c_sensor": 2,
+        "c_sensed_parameter": "Temperature",
+        "c_value": 200
+      },
+      { "c_time" : "2018-03-06 17:15:30" ,
+        "c_sensor": 2,
+        "c_sensed_parameter": "Temperature",
+        "c_value": 50
+      },
+      { "c_time" : "2018-03-06 17:14:30" ,
+        "c_sensor": 2,
+        "c_sensed_parameter": "Temperature",
+        "c_value": 300
+      },
+      { "c_time" : "2018-03-06 17:13:30" ,
+        "c_sensor": 2,
+        "c_sensed_parameter": "Temperature",
+        "c_value": 500
+      },
+      { "c_time" : "2018-03-06 17:12:30" ,
+        "c_sensor": 2,
+        "c_sensed_parameter": "Temperature",
+        "c_value": 800
+      },
+      { "c_time" : "2018-03-06 17:11:30" ,
+        "c_sensor": 2,
+        "c_sensed_parameter": "Temperature",
+        "c_value": 700
+      },
+      { "c_time" : "2018-03-06 17:10:30" ,
+        "c_sensor": 2,
+        "c_sensed_parameter": "Temperature",
+        "c_value": 300
+      },
+      { "c_time" : "2018-03-06 16:10:30" ,
+        "c_sensor": 2,
+        "c_sensed_parameter": "Temperature",
+        "c_value": 260
+      },
+      { "c_time" : "2018-03-06 16:00:30" ,
+        "c_sensor": 2,
+        "c_sensed_parameter": "Temperature",
+        "c_value": 230
+      },
+      { "c_time" : "2018-03-06 15:54:30" ,
+        "c_sensor": 2,
+        "c_sensed_parameter": "Temperature",
+        "c_value": 500
+      },
+      { "c_time" : "2018-03-06 15:51:30" ,
+        "c_sensor": 2,
+        "c_sensed_parameter": "Temperature",
+        "c_value": 450
+      },
+      { "c_time" : "2018-03-06 15:50:30" ,
+        "c_sensor": 2,
+        "c_sensed_parameter": "Temperature",
+        "c_value": 300
+      },
+      { "c_time" : "2018-03-06 15:46:30" ,
+        "c_sensor": 2,
+        "c_sensed_parameter": "Temperature",
+        "c_value": 200
+      },
+      { "c_time" : "2018-03-06 14:46:30" ,
+        "c_sensor": 2,
+        "c_sensed_parameter": "Temperature",
+        "c_value": 100
+      },
+      { "c_time" : "2018-03-06 13:46:30" ,
+        "c_sensor": 2,
+        "c_sensed_parameter": "Temperature",
+        "c_value": 51
+      },
+      { "c_time" : "2018-03-06 12:46:30" ,
+        "c_sensor": 2,
+        "c_sensed_parameter": "Temperature",
+        "c_value": 52
+      },
+      { "c_time" : "2018-03-06 11:46:30" ,
+        "c_sensor": 2,
+        "c_sensed_parameter": "Temperature",
+        "c_value": 53
+      },
+      { "c_time" : "2018-03-06 10:46:30" ,
+        "c_sensor": 2,
+        "c_sensed_parameter": "Temperature",
+        "c_value": 54
+      },
+      { "c_time" : "2018-02-19 23:46:30" ,
+        "c_sensor": 2,
+        "c_sensed_parameter": "Humidity",
+        "c_value": 500
+      },
+      { "c_time" : "2018-02-17 23:46:30" ,
+        "c_sensor": 2,
+        "c_sensed_parameter": "Humidity",
+        "c_value": 40
+      },
+      { "c_time" : "2018-02-17 23:46:30" ,
+        "c_sensor": 2,
+        "c_sensed_parameter": "Temperature",
+        "c_value": 40
+      },
+      { "c_time" : "2018-02-17 23:46:30" ,
+        "c_sensor": 2,
+        "c_sensed_parameter": "Light",
+        "c_value": 40
+      },
+      { "c_time" : "2018-02-16 23:46:06" ,
+        "c_sensor": 2,
+        "c_sensed_parameter": "Light",
+        "c_value": 300
+      },
+      { "c_time" : "2018-02-16 23:46:06" ,
+        "c_sensor": 2,
+        "c_sensed_parameter": "Humidity",
+        "c_value": 600
+      },
+      { "c_time" : "2018-02-16 23:46:06" ,
+        "c_sensor": 2,
+        "c_sensed_parameter": "Temperature",
+        "c_value": 522
+      },
+      { "c_time" : "2018-02-15 14:39:57" ,
+        "c_sensor": 2,
+        "c_sensed_parameter" : "Light",
+        "c_value": 123
+      },
+      { "c_time" : "2018-02-07 23:49:30" ,
+        "c_sensor": 2,
+        "c_sensed_parameter" : "Temperature",
+        "c_value": 45
+      },
+      { "c_time" : "2018-02-07 23:49:30" ,
+        "c_sensor": 2,
+        "c_sensed_parameter" : "Light",
+        "c_value": 25
+      },
+      { "c_time" : "2018-02-07 23:46:06" ,
+        "c_sensor": 2,
+        "c_sensed_parameter": "Temperature",
+        "c_value": 102
+       },
+      { "c_time" : "2016-12-15 04:39:45" ,
+        "c_sensor": 2,
+        "c_sensed_parameter" : "Humidity",
+        "c_value": 23
+      }
+  ]
+
+}

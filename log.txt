@@ -1,0 +1,24 @@
+
+Parse error: parse error in /Users/katrinatrinidad/Documents/GitHub/ras2017/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php on line 233
+
+Parse error: parse error in /Users/katrinatrinidad/Documents/GitHub/ras2017/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php on line 233
+
+Parse error: parse error in /Users/katrinatrinidad/Documents/GitHub/ras2017/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php on line 233
+
+Parse error: parse error in /Users/katrinatrinidad/Documents/GitHub/ras2017/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php on line 233
+
+Parse error: parse error in /Users/katrinatrinidad/Documents/GitHub/ras2017/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php on line 233
+
+Parse error: parse error in /Users/katrinatrinidad/Documents/GitHub/ras2017/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php on line 233
+
+Parse error: parse error in /Users/katrinatrinidad/Documents/GitHub/ras2017/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php on line 233
+
+Parse error: parse error in /Users/katrinatrinidad/Documents/GitHub/ras2017/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php on line 233
+
+Parse error: parse error in /Users/katrinatrinidad/Documents/GitHub/ras2017/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php on line 233
+
+Parse error: parse error in /Users/katrinatrinidad/Documents/GitHub/ras2017/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php on line 233
+
+Parse error: parse error in /Users/katrinatrinidad/Documents/GitHub/ras2017/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php on line 233
+
+Parse error: parse error in /Users/katrinatrinidad/Documents/GitHub/ras2017/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php on line 233

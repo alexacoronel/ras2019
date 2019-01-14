@@ -1,0 +1,19 @@
+[
+      { "c_time" : "2018-02-07 23:46:06" ,
+        "c_sensor": 2,
+        "c_sensed_parameter": "Temperature",
+        "c_value": 102
+       },
+
+      { "c_time" : "2018-02-07 23:49:30" ,
+        "c_sensor": 2,
+        "c_sensed_parameter" : "Temperature",
+        "c_value": 45
+      },
+
+      { "c_time" : "2018-02-07 23:49:30" ,
+        "c_sensor": 2,
+        "c_sensed_parameter" : "Light",
+        "c_value": 25
+      }
+]
