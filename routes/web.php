@@ -76,8 +76,11 @@ Route::get('wms/live/lastSound', 'LiveController@lastSound')->name('wms.lastSoun
 Route::get('wms/live/lastWS', 'LiveController@lastWS')->name('wms.lastWS');
 
 //TABLES
-
 Route::get('wms/tables', 'WMSController@tables')->name('wms.tables');
+
+//MAP
+Route::get('wms/rainfallMap', 'WMSController@rainfallMap')->name('wms.rainfallMap');
+Route::get('wms/waterLevelMap', 'WMSController@waterLevelMap')->name('wms.waterLevelMap');
 
 //EXPORT
 Route::get('wms/export', 'WMSController@exportData')->name('wms.exportData');
@@ -88,6 +91,7 @@ Route::get('wms/exportRainRate', 'WMSController@exportRainRateData')->name('wms.
 Route::get('wms/exportDailyRainfall', 'WMSController@exportDailyRainfallData')->name('wms.exportDailyRainfallData');
 Route::get('wms/exportSound', 'WMSController@exportSoundData')->name('wms.exportSoundData');
 Route::get('wms/exportWind', 'WMSController@exportWindData')->name('wms.exportWindData');
+Route::get('wms/exportWaterLevel', 'WMSController@exportWaterLevelData')->name('wms.exportWaterLevelData');
 
 
 //DMS ROUTES

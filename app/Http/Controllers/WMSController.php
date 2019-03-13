@@ -9,6 +9,9 @@ use App\Models\Sensor;
 use Illuminate\Support\Collection;
 use GuzzleHttp\Client;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Http\Controllers\APIController;
+
+
 
 class WMSController extends Controller
 {
@@ -50,23 +53,10 @@ class WMSController extends Controller
   {
     //Get station and parameter from form
     $station = request('station');
-    // $parameter = request('parameter');
-
-
-    // if($parameter == null){
-    //   $parameter = 'Temperature';
-    // }
 
     if($station == null){
       $station = 0;
     }
-
-    //   temp: C
-    //   pressure: pascal
-    //   humidity: %
-    //   rain intensity: db
-    //   wind speed: km/h
-    //   direction: degrees
 
     //Temperature
     $temp_data = DB::table('t_sensor_data')
@@ -86,6 +76,26 @@ class WMSController extends Controller
     $temp_dataFinal = array();
     foreach ($temp_data as $key => $val) {
       $temp_dataFinal[] = array(strtotime($key)*1000, $val);
+    }
+
+    //Water Level
+    $water_level_data = DB::table('t_sensor_data')
+        ->where([
+          ['c_sensor', '=', $station],
+          ['c_sensed_parameter', '=', 'Water Level']
+        ])
+        ->orderBy('c_time')
+        ->pluck('c_value', 'c_time')
+        ->toArray();
+    //Get first and last keys of $data
+    $water_level_keys = array_keys($water_level_data);
+    $water_level_last_key = end($water_level_keys);
+    reset($water_level_data);
+    $water_level_first_key = key($water_level_data);
+    //Get chart data with y in UNIX time format [x,y]
+    $water_level_dataFinal = array();
+    foreach ($water_level_data as $key => $val) {
+      $water_level_dataFinal[] = array(strtotime($key)*1000, $val);
     }
 
     //Pressure
@@ -264,15 +274,6 @@ class WMSController extends Controller
     $lastDate = date("d F Y H:i:s", strtotime($lastDate));
 
 
-    //FOR LIVE
-    // $last_temp = DB::table('t_sensor_data')
-    //             ->where('c_sensed_parameter', '=', 'Temperature')
-    //             ->orderBy('c_time', 'desc')
-    //             ->select('c_value')
-    //             ->limit(1)
-    //             ->value('c_time')
-    //             ;
-
 
     return view('wms.chart')
         ->with('stationsArray', $stationsArray)
@@ -283,6 +284,7 @@ class WMSController extends Controller
         // ->with('valueArray', json_encode($data,JSON_NUMERIC_CHECK))
         // ->with('dataFinal', json_encode($dataFinal,JSON_NUMERIC_CHECK))
         ->with('temp_dataFinal', json_encode($temp_dataFinal,JSON_NUMERIC_CHECK))
+        ->with('water_level_dataFinal', json_encode($water_level_dataFinal,JSON_NUMERIC_CHECK))
         ->with('pres_dataFinal', json_encode($pres_dataFinal,JSON_NUMERIC_CHECK))
         ->with('hum_dataFinal', json_encode($hum_dataFinal,JSON_NUMERIC_CHECK))
         ->with('rain_rate_dataFinal', json_encode($rain_rate_dataFinal,JSON_NUMERIC_CHECK))
@@ -533,13 +535,67 @@ class WMSController extends Controller
   {
      //Display all sensor data
       $sensor_data = \App\Models\Sensor_data::all();
+      return view('wms.tables', compact('sensor_data'));
+  }
 
-      // $status = APIController::getSensorData();
 
-      return view('wms.tables', compact('sensor_data'))
-          // ->with('status', $status)
-          ;
+  public static function rainfallMap()
+  {
+      return view('wms.rainfallMap');
+  }
 
+  public static function waterLevelMap()
+  {
+      $station = request('station');
+
+      if($station == null){
+        $station = 0;
+      }
+
+      $sensor = DB::table('t_sensors')
+          ->select('c_name')
+          ->value('c_name');
+
+      //Water Level
+      $water_level_data = DB::table('t_sensor_data')
+          ->where([
+            ['c_sensor', '=', $station],
+            ['c_sensed_parameter', '=', 'Water Level']
+          ])
+          ->orderBy('c_time', 'desc')
+          ->select('c_value')
+          ->limit(1)
+          ->value('c_value');
+      //Get chart data with y in UNIX time format [x,y]
+      $water_level_dataFinal = $water_level_data;
+
+      //Rain rate
+      $rain_rate_data = DB::table('t_sensor_data')
+          ->where([
+            ['c_sensor', '=', $station],
+            ['c_sensed_parameter', '=', 'Rain rate']
+          ])
+          ->orderBy('c_time', 'desc')
+          ->select('c_value')
+          ->limit(1)
+          ->value('c_value');
+      //Get chart data with y in UNIX time format [x,y]
+      $rain_rate_dataFinal = $rain_rate_data;
+
+      //Get last data's date
+      $lastDate = DB::table('t_sensor_data')
+          ->orderBy('c_time', 'desc')
+          ->select('c_time')
+          ->limit(1)
+          ->value('c_time');
+      $lastDate = date("d F Y H:i:s", strtotime($lastDate));
+
+      return view('wms.waterLevelMap')
+      ->with('sensor', json_encode($sensor,JSON_NUMERIC_CHECK))
+      ->with('water_level_dataFinal', json_encode($water_level_dataFinal,JSON_NUMERIC_CHECK))
+      ->with('rain_rate_dataFinal', json_encode($rain_rate_dataFinal,JSON_NUMERIC_CHECK))
+      ->with('lastDate', json_encode($lastDate,JSON_NUMERIC_CHECK))
+      ;
   }
 
   public static function exportData(){
@@ -587,6 +643,12 @@ class WMSController extends Controller
   public static function exportWindData(){
 
     return Excel::download(new \App\Exports\SensorWindExport, 'wind_data.xlsx');
+
+  }
+
+  public static function exportWaterLevelData(){
+
+    return Excel::download(new \App\Exports\SensorWaterLevelExport, 'water_level_data.xlsx');
 
   }
 

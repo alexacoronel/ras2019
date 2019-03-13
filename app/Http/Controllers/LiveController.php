@@ -18,13 +18,6 @@ class LiveController extends Controller
       $station = 0;
     }
 
-    //   temp: C
-    //   pressure: pascal
-    //   humidity: %
-    //   rain intensity: db
-    //   wind speed: km/h
-    //   direction: degrees
-
     //Temperature
     $temp_data = DB::table('t_sensor_data')
         ->where([
@@ -43,6 +36,26 @@ class LiveController extends Controller
     $temp_dataFinal = array();
     foreach ($temp_data as $key => $val) {
       $temp_dataFinal[] = array(strtotime($key)*1000, $val);
+    }
+
+    //Water Level
+    $water_level_data = DB::table('t_sensor_data')
+        ->where([
+          ['c_sensor', '=', $station],
+          ['c_sensed_parameter', '=', 'Water Level']
+        ])
+        ->orderBy('c_time')
+        ->pluck('c_value', 'c_time')
+        ->toArray();
+    //Get first and last keys of $data
+    $water_level_keys = array_keys($water_level_data);
+    $water_level_last_key = end($water_level_keys);
+    reset($water_level_data);
+    $water_level_first_key = key($water_level_data);
+    //Get chart data with y in UNIX time format [x,y]
+    $water_level_dataFinal = array();
+    foreach ($water_level_data as $key => $val) {
+      $water_level_dataFinal[] = array(strtotime($key)*1000, $val);
     }
 
     //Pressure
@@ -220,6 +233,7 @@ class LiveController extends Controller
         ->with('station', json_encode($station,JSON_NUMERIC_CHECK))
         ->with('stationName', json_encode($stationName,JSON_NUMERIC_CHECK))
         ->with('temp_dataFinal', json_encode($temp_dataFinal,JSON_NUMERIC_CHECK))
+        ->with('water_level_dataFinal', json_encode($water_level_dataFinal,JSON_NUMERIC_CHECK))
         ->with('pres_dataFinal', json_encode($pres_dataFinal,JSON_NUMERIC_CHECK))
         ->with('hum_dataFinal', json_encode($hum_dataFinal,JSON_NUMERIC_CHECK))
         ->with('rain_rate_dataFinal', json_encode($rain_rate_dataFinal,JSON_NUMERIC_CHECK))

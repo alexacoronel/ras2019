@@ -12,7 +12,7 @@
 <div class="card mb-3">
     <div class="card-header"><i class="fa fa-area-chart"></i> WMS Chart</div>
         <div class="card-body">
-          {{ Form::select('station', $stationsArray, null, array('onchange' => 'this.form.submit();')) }}
+          {{ Form::select('sensor', $stationsArray, null, array('onchange' => 'this.form.submit();')) }}
           <div id="container" width="100%" height="30"></div>
         </div>
 <div class="card-footer small text-muted">Last updated at <?php echo str_replace('"','',$lastDate); ?> </div>
@@ -90,6 +90,7 @@
     <a href="{{ route('wms.exportDailyRainfallData') }}">Daily rainfall</a>
     <a href="{{ route('wms.exportSoundData') }}">Sound level</a>
     <a href="{{ route('wms.exportWindData') }}">Wind Speed</a>
+    <a href="{{ route('wms.exportWaterLevelData') }}">Water Level</a>
   </div>
 </div>
 
@@ -108,6 +109,7 @@ var chart;
       });
 
       var temp_data = <?php echo $temp_dataFinal; ?>;
+      var water_level_data = <?php echo $water_level_dataFinal; ?>;
       var hum_data = <?php echo $hum_dataFinal; ?>;
       var wind_data = <?php echo $wind_dataFinal; ?>;
       var rain_rate_data = <?php echo $rain_rate_dataFinal; ?>;
@@ -124,7 +126,7 @@ var chart;
                       },
                       type: 'spline'
                     },
-                    colors: ['#ee6d6d','#fc913a','#ffc100','#718d70','#586d92','#5c626d','#4f6283'],
+                    colors: ['#ee6d6d','#fc913a','#ffc100','#718d70','#586d92','#5c626d','#4f6283', '#a1c2d1'],
                     rangeSelector: {
                         selected: 1
                     },
@@ -167,6 +169,10 @@ var chart;
                         tooltip: {
                             valueDecimals: 2,
                             valueSuffix: " °C"
+                        },
+                        marker: {
+                            enabled: true,
+                            radius: 3
                         },
                         fillColor: {
                             linearGradient: {
@@ -219,6 +225,10 @@ var chart;
                             valueDecimals: 2,
                             valueSuffix: " %"
                         },
+                        marker: {
+                            enabled: true,
+                            radius: 3
+                        },
                         fillColor: {
                             linearGradient: {
                                 x1: 0,
@@ -236,13 +246,16 @@ var chart;
                     {
                         name: "Rain rate",
                         data:  rain_rate_data,
-                        // type: 'areaspline',
                         // dashStyle: 'longdash',
                         step: true,
                         threshold: null,
                         tooltip: {
                             valueDecimals: 2,
                             valueSuffix: " mm/hr"
+                        },
+                        marker: {
+                            enabled: true,
+                            radius: 3
                         },
                         fillColor: {
                             linearGradient: {
@@ -261,8 +274,13 @@ var chart;
                     {
                         name: "Daily rainfall",
                         data:  total_rain_data,
-                        type: 'areaspline',
+                        type: 'spline',
+                        dashStyle: 'ShortDashDot',
                         threshold: null,
+                        marker: {
+                            enabled: true,
+                            radius: 3
+                        },
                         tooltip: {
                             valueDecimals: 2,
                             valueSuffix: " mm"
@@ -328,6 +346,33 @@ var chart;
                         },
                         visible: true
                     },
+                    {
+                        name: "Water Level",
+                        data:  water_level_data,
+                        dashStyle:'Dash',
+                        threshold: null,
+                        tooltip: {
+                            valueDecimals: 2,
+                            valueSuffix: " cm"
+                        },
+                        marker: {
+                            enabled: true,
+                            radius: 3
+                        },
+                        fillColor: {
+                            linearGradient: {
+                                x1: 0,
+                                y1: 0,
+                                x2: 0,
+                                y2: 1
+                            },
+                            stops: [
+                                [0, Highcharts.getOptions().colors[7]],
+                                [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
+                            ]
+                        },
+                        visible: true
+                    }
                   ]
 
           };
@@ -335,6 +380,7 @@ var chart;
   });
 
   var $temp_button = $('#temp_button');
+  var $temp_button = $('#water_level_button');
   var $pres_button = $('#pres_button');
   var $hum_button = $('#hum_button');
   var $rain_rate_button = $('#rain_rate_button');
@@ -430,6 +476,17 @@ var chart;
       } else {
           series.show();
           dir_button.style.backgroundColor = '#4f6283';
+      }
+  });
+
+  $water_level_button.click(function () {
+      var series = chart.series[8];
+      if (series.visible) {
+          series.hide();
+          water_level_button.style.backgroundColor = '#E5E5E5';
+      } else {
+          series.show();
+          water_level_button.style.backgroundColor = '#4f6283';
       }
   });
 

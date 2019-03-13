@@ -82,6 +82,22 @@
             <span class="nav-link-text">Tables</span>
           </a>
         </li>
+
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Map">
+          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents1" data-parent="#exampleAccordion">
+            <i class="fa fa-fw fa-map"></i>
+            <span class="nav-link-text">Maps</span>
+          </a>
+          <ul class="sidenav-second-level collapse" id="collapseComponents1">
+            <li>
+              <a href="{{route('wms.waterLevelMap')}}">
+                <i class="fa fa-fw fa-map"></i> Sensor Location</a>
+            </li>
+            <li>
+              <a href="{{route('wms.rainfallMap')}}">
+                <i class="fa fa-fw fa-map"></i> Interpolation</a>
+            </li>
+          </ul>
       </ul>
 
       <ul class="navbar-nav ml-auto">

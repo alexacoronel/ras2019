@@ -106,6 +106,24 @@ class APIController extends Controller
                    'c_value' =>  $field
                  ]);
               $added += 1;
+            }else if($key == "waterLevel"){
+              DB::table('t_sensor_data')
+              ->insert([
+                   'c_time' => DB::raw('NOW()'),
+                   'c_sensor' => 0,
+                   'c_sensed_parameter' => 'Water Level' ,
+                   'c_value' =>  $field
+                 ]);
+              $added += 1;
+            }else if($key == "rainIntensity"){
+              DB::table('t_sensor_data')
+              ->insert([
+                   'c_time' => DB::raw('NOW()'),
+                   'c_sensor' => 0,
+                   'c_sensed_parameter' => 'Rain Intensity' ,
+                   'c_value' =>  $field
+                 ]);
+              $added += 1;
             }else if($key == "windDirection"){
               DB::table('t_sensor_data')
               ->insert([

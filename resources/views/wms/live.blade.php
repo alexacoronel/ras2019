@@ -34,6 +34,7 @@ var url;
       });
 
       var temp_data = <?php echo $temp_dataFinal; ?>;
+      var water_level_data = <?php echo $water_level_dataFinal; ?>;
       var hum_data = <?php echo $hum_dataFinal; ?>;
       var wind_data = <?php echo $wind_dataFinal; ?>;
       var rain_rate_data = <?php echo $rain_rate_dataFinal; ?>;
@@ -67,7 +68,7 @@ var url;
                             load: getData
                         }
                     },
-                    colors: ['#ee6d6d','#fc913a','#ffc100','#718d70','#586d92','#5c626d','#4f6283'],
+                    colors: ['#ee6d6d','#fc913a','#ffc100','#718d70','#586d92','#5c626d','#4f6283', '#a1c2d1'],
                     rangeSelector: {
                         selected: 1
                     },
@@ -101,22 +102,18 @@ var url;
                     legend: {
                         enabled: true,
                         align: 'left',
-                        // backgroundColor: '#FCFFC5',
-                        // borderColor: 'black',
-                        // borderWidth: 2,
                         layout: 'vertical',
                         verticalAlign: 'top',
                         y: 100,
-                        // shadow: true
                     },
                     rangeSelector: {
                         selected: 1
                     },
                     yAxis: [{
-
-                    }, {
+                    },
+                    {//Rain Rate Y-Axis
                       plotBands:[{
-                        from: 0,
+                        from: 0.01,
                         to: 2.5,
                         color: 'rgba(68, 170, 213, 0.1)',
                         label:{
@@ -127,7 +124,7 @@ var url;
                         }
                       }, {
                     from: 2.5,
-                    to: 7.6,
+                    to: 7.5,
                     color: 'rgba(0, 0, 0, 0)',
                     label:{
                       text: 'Moderate Rain',
@@ -135,45 +132,179 @@ var url;
                         color: '#606060'
                       }
                     }
-                  }, {
-                  from: 7.7,
-                  to: 50,
-                  color: 'rgba(68, 170, 213, 0.1)',
+                    }, {
+                    from: 7.5,
+                    to: 15,
+                    color: 'rgba(68, 170, 213, 0.1)',
+                    label:{
+                      text: 'Heavy Rain',
+                      style: {
+                        color: '#606060'
+                      }
+                    }
+                    }, {
+                    from: 15,
+                    to: 30,
+                    color: 'rgba(0, 0, 0, 0)',
+                    label:{
+                      text: 'Intense Rain',
+                      style: {
+                        color: '#606060'
+                        }
+                      }
+                    }, {
+                    from: 30,
+                    to: 100,
+                    color: 'rgba(68, 170, 213, 0.1)',
+                    label:{
+                      text: 'Torrential Rain',
+                      style: {
+                        color: '#606060'
+                      }
+                    }
+                    }
+                  ],
+                  labels:{
+                    formatter: function(){
+                      return this.value + ' mm/h';
+                    }
+                  }
+                  },
+                  {//temperature
+                    labels:{
+                      formatter: function(){
+                        return this.value + ' °C';
+                      }
+                    }
+                  },
+                  {//pressure
+                    labels:{
+                      formatter: function(){
+                        return this.value + ' mb';
+                      }
+                    }
+                  },
+                  {//humidity
+                    labels:{
+                      formatter: function(){
+                        return this.value + ' %';
+                      }
+                    }
+                  },
+                  {//daily rainfall
+                    labels:{
+                      formatter: function(){
+                        return this.value + ' mm';
+                      }
+                    }
+                  },
+                  {//sound level
+                    labels:{
+                      formatter: function(){
+                        return this.value + ' dB';
+                      }
+                    }
+                  },
+                  {//wind speed
+                    labels:{
+                      formatter: function(){
+                        return this.value + ' km/h';
+                      }
+                    }
+                  },
+                  {//Water Level
+                    plotBands:[{
+                      from: 0,
+                      to: 8,
+                      color: 'rgba(68, 170, 213, 0.1)',
+                      label:{
+                        text: 'Gutter',
+                        style: {
+                          color: '#606060'
+                        }
+                      }
+                    }, {
+                  from: 8,
+                  to: 10,
+                  color: 'rgba(0, 0, 0, 0)',
                   label:{
-                    text: 'Heavy Rain',
+                    text: 'Half Knee',
                     style: {
                       color: '#606060'
                     }
                   }
-                }, {
-                from: 50,
-                to: 1000000,
+                  }, {
+                  from: 10,
+                  to: 13,
+                  color: 'rgba(68, 170, 213, 0.1)',
+                  label:{
+                    text: 'Half Tire',
+                    style: {
+                      color: '#606060'
+                    }
+                  }
+                  }, {
+                  from: 13,
+                  to: 19,
+                  color: 'rgba(0, 0, 0, 0)',
+                  label:{
+                    text: 'Knee',
+                    style: {
+                      color: '#606060'
+                      }
+                    }
+                  }, {
+                  from: 19,
+                  to: 26,
+                  color: 'rgba(68, 170, 213, 0.1)',
+                  label:{
+                    text: 'Tires',
+                    style: {
+                      color: '#606060'
+                      }
+                    }
+                  },{
+                from: 26,
+                to: 37,
                 color: 'rgba(0, 0, 0, 0)',
                 label:{
-                  text: 'Violent Rain',
+                  text: 'Waist',
                   style: {
                     color: '#606060'
+                    }
+                  }
+                }, {
+                from: 37,
+                to: 45,
+                color: 'rgba(68, 170, 213, 0.1)',
+                label:{
+                  text: 'Chest',
+                  style: {
+                    color: '#606060'
+                    }
+                  }
+                }],
+                labels:{
+                  formatter: function(){
+                    return this.value + ' in';
                   }
                 }
-              }
-                  ]
-
-                      // tickPositioner: function() {
-                      //   return [this.dataMin, this.dataMax];
-                      // },
-                      // visible: false
-                    }],
+                },
+                    ],
                     series: [{
                         name: "Temperature",
                         data:  temp_data,
                         type: 'spline',
                         threshold: null,
+                        yAxis:2,
                         tooltip: {
                             valueDecimals: 2,
                             valueSuffix: " °C"
-
                         },
-
+                        marker: {
+                            enabled: true,
+                            radius: 3
+                        },
                         fillColor: {
                             linearGradient: {
                                 x1: 0,
@@ -193,6 +324,7 @@ var url;
                         data:  pres_data,
                         type: 'spline',
                         threshold: null,
+                        yAxis: 3,
                         tooltip: {
                             valueDecimals: 2,
                             valueSuffix: " mb"
@@ -219,11 +351,16 @@ var url;
                         name: "Humidity",
                         data:  hum_data,
                         type: 'line',
+                        yAxis: 4,
                         dashStyle: 'longdash',
                         threshold: null,
                         tooltip: {
                             valueDecimals: 2,
                             valueSuffix: " %"
+                        },
+                        marker: {
+                            enabled: true,
+                            radius: 3
                         },
                         fillColor: {
                             linearGradient: {
@@ -242,14 +379,16 @@ var url;
                     {
                         name: "Rain rate",
                         data:  rain_rate_data,
-                        // type: 'areaspline',
-                        //dashStyle: 'longdash',
                         step: true,
                         threshold: null,
                         yAxis: 1,
                         tooltip: {
                             valueDecimals: 2,
                             valueSuffix: " mm/hr"
+                        },
+                        marker: {
+                            enabled: true,
+                            radius: 3
                         },
                         fillColor: {
                             linearGradient: {
@@ -268,12 +407,17 @@ var url;
                     {
                         name: "Daily rainfall",
                         data:  total_rain_data,
-                        type: 'areaspline',
+                        type: 'spline',
+                        dashStyle: 'ShortDashDot',
                         threshold: null,
-                        // yAxis: 0,
+                        yAxis: 5,
                         tooltip: {
                             valueDecimals: 2,
                             valueSuffix: " mm"
+                        },
+                        marker: {
+                            enabled: true,
+                            radius: 3
                         },
                         fillColor: {
                             linearGradient: {
@@ -293,6 +437,7 @@ var url;
                         name: "Sound level",
                         data:  sound_level_data,
                         type: 'column',
+                        yAxis: 6,
                         threshold: null,
                         tooltip: {
                             valueDecimals: 2,
@@ -317,10 +462,15 @@ var url;
                         data:  wind_data,
                         dashStyle: 'shortdot',
                         type: 'spline',
+                        yAxis: 7,
                         threshold: null,
                         tooltip: {
                             valueDecimals: 2,
                             valueSuffix: " km/h"
+                        },
+                        marker: {
+                            enabled: true,
+                            radius: 3
                         },
                         fillColor: {
                             linearGradient: {
@@ -336,8 +486,36 @@ var url;
                         },
                         visible: false
                     },
+                    {
+                        name: "Water Level",
+                        data:  water_level_data,
+                        type: 'spline',
+                        dashStyle:'Dash',
+                        threshold: null,
+                        yAxis:8,
+                        tooltip: {
+                            valueDecimals: 2,
+                            valueSuffix: " cm"
+                        },
+                        marker: {
+                            enabled: true,
+                            radius: 3
+                        },
+                        fillColor: {
+                            linearGradient: {
+                                x1: 0,
+                                y1: 0,
+                                x2: 0,
+                                y2: 1
+                            },
+                            stops: [
+                                [0, Highcharts.getOptions().colors[7]],
+                                [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
+                            ]
+                        },
+                        visible: false
+                    }
                   ]
-
           };
 
           chart = new Highcharts.StockChart(config);
