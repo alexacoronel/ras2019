@@ -199,6 +199,67 @@ var url;
                     }
                   },
                   {//sound level
+                    plotBands:[{
+                      from: 0,
+                      to: 30,
+                      color: 'rgba(68, 170, 213, 0.1)',
+                      label:{
+                        text: 'No Rain',
+                        style: {
+                          color: '#606060'
+                        }
+                      }
+                    }, {
+                    from: 30,
+                    to: 36,
+                    color: 'rgba(0, 0, 0, 0)',
+                    label:{
+                      text: 'Light Rain',
+                      style: {
+                        color: '#606060'
+                      }
+                    }
+                    }, {
+                    from:36,
+                    to: 42,
+                    color: 'rgba(68, 170, 213, 0.1)',
+                    label:{
+                      text: 'Moderate Rain',
+                      style: {
+                        color: '#606060'
+                      }
+                    }
+                    }, {
+                    from: 42,
+                    to: 46,
+                    color: 'rgba(0, 0, 0, 0)',
+                    label:{
+                      text: 'Heavy Rain',
+                      style: {
+                        color: '#606060'
+                        }
+                      }
+                    }, {
+                    from: 46,
+                    to: 54,
+                    color: 'rgba(68, 170, 213, 0.1)',
+                    label:{
+                      text: 'Intense Rain',
+                      style: {
+                        color: '#606060'
+                        }
+                      }
+                    }, {
+                    from: 54,
+                    to: 60,
+                    color: 'rgba(0, 0, 0, 0)',
+                    label:{
+                      text: 'Torrential Rain',
+                      style: {
+                        color: '#606060'
+                        }
+                      }
+                    }],
                     labels:{
                       formatter: function(){
                         return this.value + ' dB';
@@ -215,7 +276,7 @@ var url;
                   {//Water Level
                     plotBands:[{
                       from: 0,
-                      to: 6,
+                      to: 152.40,
                       color: 'rgba(68, 170, 213, 0.1)',
                       label:{
                         text: 'Low',
@@ -224,49 +285,49 @@ var url;
                         }
                       }
                     }, {
-                  from: 6,
-                  to: 12,
-                  color: 'rgba(0, 0, 0, 0)',
-                  label:{
-                    text: 'Medium',
-                    style: {
-                      color: '#606060'
-                    }
-                  }
-                  }, {
-                  from: 13,
-                  to: 18,
-                  color: 'rgba(68, 170, 213, 0.1)',
-                  label:{
-                    text: 'High',
-                    style: {
-                      color: '#606060'
-                    }
-                  }
-                  }, {
-                  from: 19,
-                  to: 36,
-                  color: 'rgba(0, 0, 0, 0)',
-                  label:{
-                    text: 'Very High',
-                    style: {
-                      color: '#606060'
+                    from: 152.40,
+                    to: 304.80,
+                    color: 'rgba(0, 0, 0, 0)',
+                    label:{
+                      text: 'Medium',
+                      style: {
+                        color: '#606060'
                       }
                     }
-                  }, {
-                  from: 36,
-                  to: 100,
-                  color: 'rgba(68, 170, 213, 0.1)',
-                  label:{
-                    text: 'Extremely High',
-                    style: {
-                      color: '#606060'
+                    }, {
+                    from:330.2,
+                    to: 457.20,
+                    color: 'rgba(68, 170, 213, 0.1)',
+                    label:{
+                      text: 'High',
+                      style: {
+                        color: '#606060'
                       }
                     }
-                  }],
+                    }, {
+                    from: 482.60,
+                    to: 914.40,
+                    color: 'rgba(0, 0, 0, 0)',
+                    label:{
+                      text: 'Very High',
+                      style: {
+                        color: '#606060'
+                        }
+                      }
+                    }, {
+                    from: 914.40,
+                    to: 2000,
+                    color: 'rgba(68, 170, 213, 0.1)',
+                    label:{
+                      text: 'Extremely High',
+                      style: {
+                        color: '#606060'
+                        }
+                      }
+                    }],
                 labels:{
                   formatter: function(){
-                    return this.value + ' in';
+                    return this.value + ' mm';
                   }
                 }
                 },
@@ -475,7 +536,7 @@ var url;
                         yAxis:8,
                         tooltip: {
                             valueDecimals: 2,
-                            valueSuffix: " in"
+                            valueSuffix: " mm"
                         },
                         marker: {
                             enabled: true,

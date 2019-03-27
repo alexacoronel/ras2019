@@ -142,7 +142,7 @@
                     </tr>\
                     <tr>\
                         <th scope="row">Rain Rate</th>\
-                        <td>' + (feature.properties['Rain Rate'] !== null ? Autolinker.link(String(feature.properties['Rain Rate'])) : '') + '</td>\
+                        <td>' + (feature.properties['Rain Rate'] !== null ? Autolinker.link(String(feature.properties['Rain Rate'])) : '') + " mm/hr" + '</td>\
                     </tr>\
                 </table>';
             layer.bindPopup(popupContent, {maxHeight: 400});

@@ -77,23 +77,23 @@
     var circleColor;
     var circleFill;
     if (water_level_data > 0){
-      if(water_level_data > 0 && water_level_data < 6){
+      if(water_level_data > 0 && water_level_data <= 152.40){
         circleColor = '#2295C5'
         circleFill = '#2295C5'
       }
-      if(water_level_data >= 6 && water_level_data <12 ){
+      if(water_level_data >152.40  && water_level_data <= 304.80 ){
         circleColor = '#95BC9C'
         circleFill = '#95BC9C'
       }
-      else if(water_level_data >= 12 && water_level_data < 18){
+      else if(water_level_data > 304.80 && water_level_data <= 457.20){
         circleColor = '#E8EE70'
         circleFill = '#E8EE70'
       }
-      else if(water_level_data >= 18 && water_level_data < 36){
+      else if(water_level_data > 457.20 && water_level_data <= 914.40){
         circleColor = '#FCB043'
         circleFill = '#FCB043'
       }
-      else if(water_level_data >= 36){
+      else if(water_level_data > 914.40){
         circleColor = '#E70D0E'
         circleFill = '#E70D0E'
       }
@@ -106,14 +106,13 @@
       }).addTo(mymap);
     }
 
-    var customPopup = "<b>Water Level: </b>" + water_level_data + " in" +  "<br><br><b>RAS Decibel:</b> 34 dB</br>" + "<b>Rain Rate:</b> 2 mm/hr" +  "<br><b>Rain Intensity:</b> Light</br>" + "<br>Last updated at " + lastDate;
+    var customPopup = "<b>Water Level: </b>" + water_level_data + " mm" +  "<br><br><b>RAS Decibel:</b> 34 dB</br>" + "<b>Rain Rate:</b> 2 mm/hr" +  "<br><b>Rain Intensity:</b> Light</br>" + "<br>Last updated at " + lastDate;
     var customOptions = {
       'maxWidth': '400',
       'width' : '200',
     }
     var marker = L.marker([14.6395, 121.0781]).addTo(mymap);
     marker.bindPopup(customPopup, customOptions).openPopup();
-
 
     function getColor(d) {
         return d > 46 ? '#E70D0E' :
@@ -123,7 +122,6 @@
                d > 8   ? '#2295C5' :
                           '#FFEDA0';
     }
-
 
     var legend = L.control({position: 'bottomright'});
     legend.onAdd = function (mymap) {
