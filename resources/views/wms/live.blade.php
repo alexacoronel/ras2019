@@ -215,75 +215,55 @@ var url;
                   {//Water Level
                     plotBands:[{
                       from: 0,
-                      to: 8,
+                      to: 6,
                       color: 'rgba(68, 170, 213, 0.1)',
                       label:{
-                        text: 'Gutter',
+                        text: 'Low',
                         style: {
                           color: '#606060'
                         }
                       }
                     }, {
-                  from: 8,
-                  to: 10,
+                  from: 6,
+                  to: 12,
                   color: 'rgba(0, 0, 0, 0)',
                   label:{
-                    text: 'Half Knee',
-                    style: {
-                      color: '#606060'
-                    }
-                  }
-                  }, {
-                  from: 10,
-                  to: 13,
-                  color: 'rgba(68, 170, 213, 0.1)',
-                  label:{
-                    text: 'Half Tire',
+                    text: 'Medium',
                     style: {
                       color: '#606060'
                     }
                   }
                   }, {
                   from: 13,
-                  to: 19,
+                  to: 18,
+                  color: 'rgba(68, 170, 213, 0.1)',
+                  label:{
+                    text: 'High',
+                    style: {
+                      color: '#606060'
+                    }
+                  }
+                  }, {
+                  from: 19,
+                  to: 36,
                   color: 'rgba(0, 0, 0, 0)',
                   label:{
-                    text: 'Knee',
+                    text: 'Very High',
                     style: {
                       color: '#606060'
                       }
                     }
                   }, {
-                  from: 19,
-                  to: 26,
+                  from: 36,
+                  to: 100,
                   color: 'rgba(68, 170, 213, 0.1)',
                   label:{
-                    text: 'Tires',
+                    text: 'Extremely High',
                     style: {
                       color: '#606060'
                       }
                     }
-                  },{
-                from: 26,
-                to: 37,
-                color: 'rgba(0, 0, 0, 0)',
-                label:{
-                  text: 'Waist',
-                  style: {
-                    color: '#606060'
-                    }
-                  }
-                }, {
-                from: 37,
-                to: 45,
-                color: 'rgba(68, 170, 213, 0.1)',
-                label:{
-                  text: 'Chest',
-                  style: {
-                    color: '#606060'
-                    }
-                  }
-                }],
+                  }],
                 labels:{
                   formatter: function(){
                     return this.value + ' in';
@@ -495,7 +475,7 @@ var url;
                         yAxis:8,
                         tooltip: {
                             valueDecimals: 2,
-                            valueSuffix: " cm"
+                            valueSuffix: " in"
                         },
                         marker: {
                             enabled: true,

@@ -51,11 +51,11 @@
       <div id="map"></div>
 
       <style>
-         #map { height: 600px;}
+         #map { height: 700px;}
       </style>
 
-
         <script src="{{asset('qgis/js/leaflet.js')}}"></script>
+        <script src="{{asset('qgis/js/L.Control.Locate.min.js')}}"></script>
         <script src="{{asset('qgis/js/leaflet.rotatedMarker.js')}}"></script>
         <script src="{{asset('qgis/js/leaflet.pattern.js')}}"></script>
         <script src="{{asset('qgis/js/leaflet-hash.js')}}"></script>
@@ -63,7 +63,7 @@
         <script src="{{asset('qgis/js/rbush.min.js')}}"></script>
         <script src="{{asset('qgis/js/labelgun.min.js')}}"></script>
         <script src="{{asset('qgis/js/labels.js')}}"></script>
-        <script src="{{asset('qgis/data/text_data_ateneo_1.js')}}"></script>
+        <script src="{{asset('qgis/data/SensorLocations_2.js')}}"></script>
 
         <script>
 
@@ -83,9 +83,11 @@
             }
             highlightLayer.openPopup();
         }
+
         var map = L.map('map', {
             zoomControl:true, maxZoom:28, minZoom:1
         })
+
         var hash = new L.Hash(map);
         map.attributionControl.addAttribution('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a>');
         var bounds_group = new L.featureGroup([]);
@@ -94,12 +96,21 @@
                 map.fitBounds(bounds_group.getBounds());
             }
         }
-        var overlay_OSMStandard_0 = L.tileLayer('http://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        var overlay_BaseMap_0 = L.tileLayer('http://tile.openstreetmap.org/{z}/{x}/{y}.png', {
             opacity: 1.0
         });
-        overlay_OSMStandard_0.addTo(map);
-        map.addLayer(overlay_OSMStandard_0);
-        function pop_text_data_ateneo_1(feature, layer) {
+
+        overlay_BaseMap_0.addTo(map);
+        map.addLayer(overlay_BaseMap_0);
+
+        var img_Interpolated_1 = '{{asset('qgis/data/Interpolated_1.png')}}';
+        var img_bounds_Interpolated_1 = [[14.61630533218357,121.0557908949245],[14.65736933791556,121.10943378672572]];
+        var overlay_Interpolated_1 = new L.imageOverlay(img_Interpolated_1, img_bounds_Interpolated_1);
+
+        bounds_group.addLayer(overlay_Interpolated_1);
+        map.addLayer(overlay_Interpolated_1);
+
+        function  pop_SensorLocations_2(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (i in e.target._eventParents) {
@@ -115,15 +126,19 @@
                 },
                 mouseover: highlightFeature,
             });
+
             var popupContent = '<table>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['Sensor'] !== null ? Autolinker.link(String(feature.properties['Sensor'])) : '') + '</td>\
+                        <th scope="row">Sensor</th>\
+                        <td>' + (feature.properties['Sensor'] !== null ? Autolinker.link(String(feature.properties['Sensor'])) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['Latitude'] !== null ? Autolinker.link(String(feature.properties['Latitude'])) : '') + '</td>\
+                        <th scope="row">Latitude</th>\
+                        <td>' + (feature.properties['Latitude'] !== null ? Autolinker.link(String(feature.properties['Latitude'])) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['Longitude'] !== null ? Autolinker.link(String(feature.properties['Longitude'])) : '') + '</td>\
+                        <th scope="row">Longitude</th>\
+                        <td>' + (feature.properties['Longitude'] !== null ? Autolinker.link(String(feature.properties['Longitude'])) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <th scope="row">Rain Rate</th>\
@@ -133,9 +148,9 @@
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_text_data_ateneo_1_0() {
+        function style_SensorLocations_2_0() {
             return {
-                pane: 'pane_text_data_ateneo_1',
+                pane: 'pane_SensorLocations_2',
                 radius: 4.0,
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
@@ -148,30 +163,28 @@
                 fillColor: 'rgba(225,89,137,1.0)',
             }
         }
-        map.createPane('pane_text_data_ateneo_1');
-        map.getPane('pane_text_data_ateneo_1').style.zIndex = 401;
-        map.getPane('pane_text_data_ateneo_1').style['mix-blend-mode'] = 'normal';
-        var layer_text_data_ateneo_1 = new L.geoJson(json_text_data_ateneo_1, {
+
+        map.createPane('pane_SensorLocations_2');
+        map.getPane('pane_SensorLocations_2').style.zIndex = 402;
+        map.getPane('pane_SensorLocations_2').style['mix-blend-mode'] = 'normal';
+        var layer_SensorLocations_2 = new L.geoJson(json_SensorLocations_2, {
             attribution: '',
-            pane: 'pane_text_data_ateneo_1',
-            onEachFeature: pop_text_data_ateneo_1,
+            pane: 'pane_SensorLocations_2',
+            onEachFeature: pop_SensorLocations_2,
             pointToLayer: function (feature, latlng) {
                 var context = {
                     feature: feature,
                     variables: {}
                 };
-                return L.circleMarker(latlng, style_text_data_ateneo_1_0(feature));
+                return L.circleMarker(latlng, style_SensorLocations_2_0(feature));
             },
         });
-        bounds_group.addLayer(layer_text_data_ateneo_1);
-        map.addLayer(layer_text_data_ateneo_1);
-        var img_Interpolated_2 = '{{asset('qgis/data/Interpolated_2.png')}}';
-        var img_bounds_Interpolated_2 = [[14.63820656751254,121.07570654477344],[14.640379811441395,121.07962597349949]];
-        var overlay_Interpolated_2 = new L.imageOverlay(img_Interpolated_2, img_bounds_Interpolated_2);
-        bounds_group.addLayer(overlay_Interpolated_2);
-        map.addLayer(overlay_Interpolated_2);
+        bounds_group.addLayer(layer_SensorLocations_2);
+        map.addLayer(layer_SensorLocations_2);
+
+
         var baseMaps = {};
-        L.control.layers(baseMaps,{"Interpolated": overlay_Interpolated_2,'<img src="{{asset('qgis/legend/text_data_ateneo_1.png')}}" /> text_data_ateneo': layer_text_data_ateneo_1,"OSM Standard": overlay_OSMStandard_0,}).addTo(map);
+        L.control.layers(baseMaps,{'<img src="{{asset('qgis/legend/SensorLocations_2.png')}}" /> Sensor Locations': layer_SensorLocations_2,"Interpolated": overlay_Interpolated_1,"Base Map": overlay_BaseMap_0,}).addTo(map);
         setBounds();
         L.ImageOverlay.include({
             getBounds: function () {

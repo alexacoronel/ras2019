@@ -29,7 +29,11 @@
     margin-right: 8px;
     opacity: 0.7;
 }
-
+.my-label {
+    position: absolute;
+    width:1000px;
+    font-size:20px;
+}
 
 </style>
 
@@ -52,7 +56,7 @@
   <div class='custom-popup' id="mapid"></div>
 
      <style>
-        #mapid { height: 600px;}
+        #mapid { height: 700px;}
      </style>
 
      <script >
@@ -62,55 +66,47 @@
      var lastDate = <?php echo $lastDate; ?>;
 
 
-     var mymap = L.map('mapid', {trackResize: false}).setView([14.6395, 121.0781], 16);
+     var mymap = L.map('mapid', {trackResize: false}).setView([14.6395, 121.0781], 18);
 
      L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
          attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-         maxZoom: 18,
+         maxZoom: 20,
          id: 'mapbox.streets',
          accessToken: 'pk.eyJ1IjoicmFzc2VydmVyIiwiYSI6ImNqc28xOGlkMDBpNDQ0NHBtZTJyNnoxcHAifQ.b1kNLAfH-ObjVUUJkrfzug'}).addTo(mymap);
 
     var circleColor;
     var circleFill;
     if (water_level_data > 0){
-      if(water_level_data > 0 && water_level_data < 8){
+      if(water_level_data > 0 && water_level_data < 6){
         circleColor = '#2295C5'
         circleFill = '#2295C5'
       }
-      if(water_level_data > 8 && water_level_data < 10){
-        circleColor = '#97BD9E'
-        circleFill = '#97BD9E'
+      if(water_level_data >= 6 && water_level_data <12 ){
+        circleColor = '#95BC9C'
+        circleFill = '#95BC9C'
       }
-      else if(water_level_data > 10 && water_level_data < 13){
-        circleColor = '#C0D389'
-        circleFill = '#C0D389'
-      }
-      else if(water_level_data > 13 && water_level_data < 19){
+      else if(water_level_data >= 12 && water_level_data < 18){
         circleColor = '#E8EE70'
         circleFill = '#E8EE70'
       }
-      else if(water_level_data > 19 && water_level_data < 26){
-        circleColor = '#FDB340'
-        circleFill = '#FDB340'
+      else if(water_level_data >= 18 && water_level_data < 36){
+        circleColor = '#FCB043'
+        circleFill = '#FCB043'
       }
-      else if(water_level_data > 26 && water_level_data < 37){
-        circleColor = '#FA842F'
-        circleFill = '#FA842F'
-      }
-      else if(water_level_data > 37 && water_level_data < 45){
-        circleColor = '#E3120D'
-        circleFill = '#E3120D'
+      else if(water_level_data >= 36){
+        circleColor = '#E70D0E'
+        circleFill = '#E70D0E'
       }
 
       var circle = L.circle([14.6395, 121.0781],{
         color: circleColor,
         fillColor: circleFill,
         fillOpacity: 0.5,
-        radius:400
+        radius:100
       }).addTo(mymap);
     }
 
-    var customPopup = "<b>Water Level: </b>" + water_level_data + " in" + "<br><br>Last updated at " + lastDate;
+    var customPopup = "<b>Water Level: </b>" + water_level_data + " in" +  "<br><br><b>RAS Decibel:</b> 34 dB</br>" + "<b>Rain Rate:</b> 2 mm/hr" +  "<br><b>Rain Intensity:</b> Light</br>" + "<br>Last updated at " + lastDate;
     var customOptions = {
       'maxWidth': '400',
       'width' : '200',
@@ -120,12 +116,10 @@
 
 
     function getColor(d) {
-        return d > 45 ? '#E3120D' :
-               d > 37  ? '#FA842F' :
-               d > 26  ? '#FDB340' :
+        return d > 46 ? '#E70D0E' :
+               d > 37  ? '#FCB043' :
                d > 19  ? '#E8EE70' :
-               d > 13   ? '#C0D389' :
-               d > 10   ? '#97BD9E' :
+               d > 10   ? '#95BC9C' :
                d > 8   ? '#2295C5' :
                           '#FFEDA0';
     }
@@ -134,8 +128,8 @@
     var legend = L.control({position: 'bottomright'});
     legend.onAdd = function (mymap) {
         var div = L.DomUtil.create('div', 'info legend'),
-        grades = [8, 10, 13, 19, 26, 37, 45],
-        labels = ["Gutter", "Half Knee", "Half Tire", "Knee", "Tires", "Waist", "Chest"];
+        grades = [8, 10, 19, 37, 46],
+        labels = ["Low", "Medium", "High", "Very High", "Extremely High"];
 
         // loop through our density intervals and generate a label with a colored square for each interval
         for (var i = 0; i < grades.length; i++) {

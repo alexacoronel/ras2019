@@ -95,7 +95,7 @@
             </li>
             <li>
               <a href="{{route('wms.rainfallMap')}}">
-                <i class="fa fa-fw fa-map"></i> Interpolation</a>
+                <i class="fa fa-fw fa-map"></i> Rainfall Interpolation</a>
             </li>
           </ul>
       </ul>
