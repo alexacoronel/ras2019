@@ -477,7 +477,7 @@ var url;
                     {
                         name: "Sound level",
                         data:  sound_level_data,
-                        type: 'column',
+                        type: 'line',
                         yAxis: 6,
                         threshold: null,
                         tooltip: {
